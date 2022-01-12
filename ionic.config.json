@@ -1,0 +1,7 @@
+{
+  "name": "Projet_Ionic_LAMBERT",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

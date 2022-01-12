@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab/game-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="game">{{game.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="setModif()">Rendre Modifiable</ion-button>
+  <div *ngIf="!modif">
+    <ion-grid *ngIf="game">
+      <ion-row>
+        <ion-col>
+          <strong>Plateforme :</strong>
+          <ion-icon *ngIf="game.platform === 'PC'" name="checkmark"></ion-icon>
+          <ion-icon *ngIf="game.platform === 'XBOX'" name="close-circle"></ion-icon>
+          <ion-icon *ngIf="game.platform === 'PLAYSTATION'" name="close-circle"></ion-icon>
+          <ion-icon *ngIf="game.platform === 'NINTENDO'" name="close-circle"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="onDelete(game.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <img [src]="game.cover">
+        </ion-col>
+        <ion-col size="6">
+          <strong>Title</strong> <br>
+          {{game.name}} <br>
+          <strong>Date</strong> <br>
+          {{game.releaseDate}} <br>
+          <strong>Editeur</strong> <br>
+          {{game.editor}} <br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <strong>Genre</strong><br>
+          {{game.genre}} <br>
+        </ion-col>
+        <ion-col>
+          <strong>Age</strong> <br>
+          {{game.age}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <strong>Résumé</strong> <br>
+          <p>
+            {{game.description}}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="modif && game">
+    <ion-item>
+      <ion-label>Affiche</ion-label>
+      <ion-input type="text" [(ngModel)]="game.cover"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Titre</ion-label>
+      <ion-input type="text" [(ngModel)]="game.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Plateforme</ion-label>
+      <ion-input type="text" [(ngModel)]="game.platform"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-input type="text" [(ngModel)]="game.releaseDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Editeur</ion-label>
+      <ion-input type="text" [(ngModel)]="game.editor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Age</ion-label>
+      <ion-input type="text" [(ngModel)]="game.age"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Genre</ion-label>
+      <ion-input type="text" [(ngModel)]="game.genre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea rows="20" [(ngModel)]="game.description"></ion-textarea>
+    </ion-item>
+    <p class="text-center">
+      <ion-button (click)="onModif()">Modifier</ion-button>
+    </p>
+  </div>
+</ion-content>
+
