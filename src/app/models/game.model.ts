@@ -7,7 +7,7 @@ export class Game {
     releaseDate: string;
     editor: string;
     genre: string;
-    age: number;
+    age: string;
 
     constructor() {
         this.name = '';
@@ -17,7 +17,7 @@ export class Game {
         this.releaseDate = '';
         this.editor = '';
         this.genre = '';
-        this.age = 0;
+        this.age = '';
     }
 
 }

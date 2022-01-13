@@ -25,3 +25,20 @@
 #container a {
   text-decoration: none;
 }
+
+p {
+  padding: 30px;
+  text-align: center;
+  font-size: large;
+}
+
+h1 {
+  text-align: center;
+}
+
+.neon {
+  background-image: url("../../assets/img/photofunky.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 1px 1px 5px 8px rgb(186, 32, 224);
+}

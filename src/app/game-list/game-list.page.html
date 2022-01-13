@@ -5,15 +5,21 @@
 </ion-header>
 
 <ion-content>
-  <h2>Création d'un nouveau jeu</h2>
-  <ion-button routerLink="/tab/game-list/new">Création
-
-  </ion-button>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tab/game-list/new">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <h2>Liste des Jeux</h2>
   <ion-grid>
     <ion-row>
       <ion-col size="4" *ngFor="let game of games">
-        <ion-card [routerLink]="['/tab/game-list/', game.id]">
+        <ion-card class="card" [ngClass]="{
+            'neon-pc': true, 
+            'neon-xbox': game.platform.toUpperCase() === 'XBOX',
+            'neon-playstation': game.platform.toUpperCase() === 'PLAYSTATION',
+            'neon-nintendo': game.platform.toUpperCase() === 'NINTENDO'}" 
+          [routerLink]="['/tab/game-list/', game.id]">
           <img [src]="game.cover" [alt]="game.name">
           <ion-card-header>
             <ion-card-title>{{game.name}}</ion-card-title>

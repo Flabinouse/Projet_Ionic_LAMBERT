@@ -12,6 +12,8 @@ import { Game } from 'src/app/models/game.model';
 export class GameNewPage implements OnInit {
 
   public game!: Game
+  public errorMessage!: string;
+  public verifPost : boolean = false;
 
   constructor(
     private Game: GameService,
@@ -20,7 +22,7 @@ export class GameNewPage implements OnInit {
   ) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.game = new Game();
   }
 
@@ -31,15 +33,31 @@ export class GameNewPage implements OnInit {
     });
     (await toast).present().then(() => {
       setTimeout(() => {
-        this.router.navigate(['/game-list']);
+        this.router.navigate(['/tab/game-list']);
       }, 2000)
     });
   }
 
-  add() {
-    this.Game.saveNewGame(this.game).subscribe(() => {
-      this.game = new Game();
-      this.presentToast();
+  async ErrorToast() {
+    const toast = this.toastCtrl.create({
+      message: 'Veuillez saisir tous les champs',
+      duration: 2000
     });
+    (await toast).present().then(() => {
+      setTimeout(() => {
+      }, 2000)
+    });
+  }
+
+  add(): void {
+    this.verifPost = true;
+    if(this.game.cover === '' || this.game.platform === '' || this.game.name === '' || this.game.genre === '' || this.game.editor === '' || this.game.releaseDate === '' || this.game.description === '' || this.game.age === '') {
+      this.ErrorToast();
+    } else {
+      this.Game.saveNewGame(this.game).subscribe(() => {
+        this.game = new Game();
+        this.presentToast();
+      });
+    }
   }
 }

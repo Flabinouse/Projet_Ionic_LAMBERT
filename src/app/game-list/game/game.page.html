@@ -14,10 +14,10 @@
       <ion-row>
         <ion-col>
           <strong>Plateforme :</strong>
-          <ion-icon *ngIf="game.platform === 'PC'" name="checkmark"></ion-icon>
-          <ion-icon *ngIf="game.platform === 'XBOX'" name="close-circle"></ion-icon>
-          <ion-icon *ngIf="game.platform === 'PLAYSTATION'" name="close-circle"></ion-icon>
-          <ion-icon *ngIf="game.platform === 'NINTENDO'" name="close-circle"></ion-icon>
+          <ion-icon *ngIf="game.platform.toUpperCase() === 'PC'" name="logo-windows"></ion-icon>
+          <ion-icon *ngIf="game.platform.toUpperCase() === 'XBOX'" name="logo-xbox"></ion-icon>
+          <ion-icon *ngIf="game.platform.toUpperCase() === 'PLAYSTATION'" name="logo-playstation"></ion-icon>
+          <ion-icon *ngIf="game.platform.toUpperCase() === 'NINTENDO'" name="tablet-landscape-outline"></ion-icon>
         </ion-col>
         <ion-col>
           <ion-button (click)="onDelete(game.id)">
