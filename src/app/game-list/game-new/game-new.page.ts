@@ -12,7 +12,6 @@ import { Game } from 'src/app/models/game.model';
 export class GameNewPage implements OnInit {
 
   public game!: Game
-  public errorMessage!: string;
   public verifPost : boolean = false;
 
   constructor(
