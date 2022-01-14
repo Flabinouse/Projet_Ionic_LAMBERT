@@ -20,7 +20,7 @@
           <ion-icon *ngIf="game.platform.toUpperCase() === 'NINTENDO'" name="tablet-landscape-outline"></ion-icon>
         </ion-col>
         <ion-col>
-          <ion-button (click)="onDelete(game.id)">
+          <ion-button (click)="setDelete(game.id)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-col>

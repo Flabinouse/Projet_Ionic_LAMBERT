@@ -56,6 +56,7 @@ export class GameNewPage implements OnInit {
       this.Game.saveNewGame(this.game).subscribe(() => {
         this.game = new Game();
         this.presentToast();
+        this.router.navigate(['/tab/game-list']);
       });
     }
   }

@@ -62,6 +62,34 @@ export class GamePage implements OnInit {
     (await toast).present();
   }
 
+  async setDelete(id: any) { 
+      const alert = await this.alertCtrl.create({
+        header: 'Supression',
+        message: 'Voulez-vous supprimer le jeu ?',
+        buttons: [
+          {
+            text: 'Non',
+            role: 'cancel',
+          },
+          {
+            text: 'Oui',
+            handler: () => {
+              this.onDelete(id);
+            }
+          }
+        ]
+    });
+    await alert.present();
+  }
+
+  async deleteToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Suppression effectuée',
+      duration: 2000
+    });
+    (await toast).present();
+  }
+
   onModif() {
     this.Game.update(this.game).subscribe(() => {
       this.presentToast();
@@ -72,5 +100,6 @@ export class GamePage implements OnInit {
   onDelete(id: any) {
     this.Game.delete(id);
     this.router.navigate(['/tab/game-list']);
+    this.deleteToast();
   }
 }
